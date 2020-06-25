@@ -1,0 +1,11 @@
+fastapi
+pydantic
+uvicorn
+gino
+black
+pytest
+pytest-asyncio
+requests
+pytest-cov
+sqlalchemy
+asyncpg

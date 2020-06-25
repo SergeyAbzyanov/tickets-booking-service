@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    environment:
+      TZ: UTC
+      POSTGRES_USER: cinema
+      POSTGRES_PASSWORD: cinema
+      POSTGRES_DB: tickets
+    ports:
+      - "5432"
+
+  tickets-booking:
+    container_name: tickets-booking
+    build: .
+    environment:
+      TZ: UTC
+      DB_USER: cinema
+      DB_PASSWORD: cinema
+      DB_NAME: tickets
+      DB_HOST: db
+      DB_PORT: 5432
+    command: help
+    ports:
+      - "8000:8000"
+    depends_on:
+      - "db"
